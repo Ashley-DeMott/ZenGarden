@@ -1,4 +1,16 @@
+@use '_organisms' as *;
+@use '_molecules' as *;
+@use '_atoms' as *;
 
-/* All variables, colors, font, */
-@use 'molecules.scss' as *;
-@use 'organisms.scss' as *;
+
+/* Smaller screen size */
+@media (max-width: 600px) {
+// Change to single column scroll
+
+.page-wrapper {
+display: grid;
+grid-template-columns: 1;
+
+}
+
+}
