@@ -58,7 +58,16 @@ a:hover {
 }
 
 .summary {
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #fff;
   padding: 15% 0;
+}
+.summary p:last-child {
+  border-top: 1px solid #fff;
+  margin-top: 1em;
+  padding-top: 1.5em;
 }
 .summary a {
   color: #fff;

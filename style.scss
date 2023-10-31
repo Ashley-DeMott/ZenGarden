@@ -1,12 +1,11 @@
-@use '_organisms' as *;
-@use '_molecules' as *;
-@use '_atoms' as *;
+@use '_organisms' as o;
+@use '_molecules' as m;
+@use '_atoms' as a;
 
 
 /* Smaller screen size */
 @media (max-width: 600px) {
 // Change to single column scroll
-
 .page-wrapper {
 display: grid;
 grid-template-columns: 1;
