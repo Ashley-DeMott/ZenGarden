@@ -1,30 +1,40 @@
+/* Currenlty just in CSS, don't overwrite with scss (but later rewrite this in SCSS)*/
 h2,
 h3,
 h4 {
   font-family: "Pacifico", cursive;
-  margin: 0.5;
+  margin: 5%;
+  font-size: 1.5em;
+  line-height: 1em;
 }
 
 h1 {
+  color: #ff0055;
+  font-weight: 900; /* Heavy */
+  font-size: 40px;
+  letter-spacing: 1px;
+  line-height: 1em;
+}
+
+abbr {
+	text-decoration: none;
+}
+
+/*
+h2 {
   background: #40E0D0;
   color: #333;
   display: inline-block;
   font-weight: normal;
   margin-bottom: 1em;
   padding: 0.5em 1em;
-}
+}*/
 
-h2 {
-  color: #ff0055;
-  font-weight: 900; /* Heavy */
-  font-size: 8em;
-  letter-spacing: 1px;
-  line-height: 1em;
-}
+/*
 
-h3 {
+h3, h2 {
   font-size: 2.25em;
-  font-weight: 200; /* Thin */
+  font-weight: 200;
   letter-spacing: 1px;
   line-height: 1em;
   padding: 0.5em 0 0.25em 0;
@@ -32,11 +42,12 @@ h3 {
 
 h4 {
   font-size: 1.5em;
-  font-weight: 200; /* Thin */
+  font-weight: 200;
   letter-spacing: 1px;
   line-height: 1em;
   margin: 0.5em 0;
 }
+*/
 
 p {
   font-family: "Josefin Sans", sans-serif;
@@ -44,6 +55,14 @@ p {
   line-height: 1.5em;
   padding: 0.75em 0;
   margin: 0;
+}
+
+p {
+	/*background: rgba(255, 255, 255, 0.9); */
+	background: rgba(255, 255, 255, .1);
+  color: #333;
+  margin-left: -30%;
+  padding: 5% 5% 5% 30%;
 }
 
 a {
@@ -62,7 +81,6 @@ a:hover {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #fff;
-  padding: 15% 0;
 }
 .summary p:last-child {
   border-top: 1px solid #fff;
@@ -73,20 +91,13 @@ a:hover {
   color: #fff;
 }
 
-.preamble {
-  background: rgba(255, 255, 255, 0.9);
-  color: #333;
-  margin-left: -30%;
-  padding: 5% 5% 5% 30%;
-}
-
-.intro {
-  padding: 5%;
+.intro, .main {
+	margin: 10px; /* undo the -10 margin*/
 }
 
 .page-wrapper {
   background-color: #ffb151;
-  background-image: url("SVG/flower.svg");
+  /*background-image: url("SVG/flower.svg");*/
   margin: -10px;
 }
 
@@ -94,6 +105,42 @@ a:hover {
   color: #e31266;
   background-color: red;
 }
+
+.sidebar {
+	padding: 10px;
+}
+
+.sidebar, header > h1 {
+	background-image: url("SVG/bamboo.svg");
+	background-position: right top;
+	background-repeat: repeat;	
+}
+
+footer {
+	padding: 20px;
+}
+
+header > h1:before {
+	display: grid; /* Text is centered a row above, float right with display: flex */
+	content: "Tropical";
+}
+
+header > h1 {
+	/*background: rgba(255, 255, 255, .1);*/
+	margin: -5.5%;
+	padding: 5.5%;
+	margin-bottom: 0;
+	padding-bottom: 2%;
+	
+	text-align: center;
+	font-size: 60px;
+}
+
+/* Move to bottom of page? Can do with Grid*/
+p[role=contentinfo] {
+	background-color: white;	
+}
+
 
 /* Smaller screen size */
 @media (max-width: 600px) {
@@ -103,4 +150,36 @@ a:hover {
   }
 }
 
+/* Larger screen size */
+@media (min-width: 900px) {
+	.page-wrapper {
+		display: grid;
+		grid-template-areas: 
+		 "intro intro intro sidebar"
+		 "main main main sidebar"
+		 "main main main sidebar";	
+	}
+	
+	section.intro {
+		grid-area: intro;
+	}
+	
+	div.main {
+		grid-area: main;
+	}
+	
+	aside.sidebar {
+		grid-area: sidebar;
+
+	}
+	
+	.sidebar:before {
+		display: block;
+		content: "one";
+		z-index: 4;
+		width: 100%;
+		background-color: black;
+	}
+	
+}
 /*# sourceMappingURL=style.css.map */
