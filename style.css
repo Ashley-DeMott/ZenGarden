@@ -1,9 +1,17 @@
-/* Currenlty just in CSS, don't overwrite with scss (but later rewrite this in SCSS)*/
+/* Currenlty just in CSS --> Rewrite this in SCSS! */
+/* Add variables to _variables.scss */
 
-/* Move to SCSS Variables*/
-:root {
-	
-	overflow-x: hidden; /* Don't allow horizontal scrolling */
+:root {	
+	overflow-x: hidden; /* Hide horizontal scroll bar */
+}
+
+/* Background of repeating flowers */
+.page-wrapper {	
+	background: round url("SVG/flower1.svg");
+	background-size: 125px 120px;
+    background-position: center top;
+  background-color: #ffb151;
+  margin: -10px;
 }
 
 h2,
@@ -22,6 +30,62 @@ h1 {
   letter-spacing: 1px;
   line-height: 1em;
 }
+
+header > h1:before {
+	display: grid; /* Text is centered a row above, float right with display: flex */
+	content: "Tropical";
+}
+
+header > h1 {
+	margin: -5.5%;
+	padding: 5.5%;
+	margin-bottom: 0;
+	margin-right: -10px;
+	padding-bottom: 2%;
+	
+	text-align: center;
+	font-size: 60px;  
+}
+
+h2, h3 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+}
+
+/* Space the CSS abreviation to fit in the header */
+h2 > abbr {
+	padding: 0em .5em;
+}
+
+/* Add spaces to put images before and after the sub-headings */
+h2:before, h2:after, h3:before, h3:after {
+	 display: block;
+	 content: "";
+	 height: 50px;
+	 width: 50px;
+	 background-repeat: no-repeat;
+}
+
+/* Add Toucan SVG to the h2 header */
+h2:before, h2:after {
+	background-image: url("SVG/toucan.svg");
+}
+
+/* Add Bell Flower SVG to all h3 headers */
+ h3:before, h3:after {	
+	 background-image: url("SVG/bellFlower.svg");	 
+ }
+
+/* Adjusting margins to keep headers centered */
+h2:after {
+	margin-left: 15px;
+}
+ 
+h3:after {
+	 margin-left: 30px;
+ }
 
 abbr {
 	text-decoration: none;
@@ -56,25 +120,21 @@ h4 {
 }
 */
 
+/* Trying to make it easier to read, can change color? */
+ul, p {
+	background: rgba(255, 255, 255, .15); 
+}
+
 p {
   font-family: "Josefin Sans", sans-serif;
   font-size: 1em;
   line-height: 1.5em;
-  padding: 0.75em 0;
-  margin: 0;
-}
-
-.summary {
-  margin-left: 0px;
-}
-
-p {
-	/*background: rgba(255, 255, 255, 0.9); */
-	background: rgba(255, 255, 255, .1);
+  margin: 0;  
   color: #333;
   padding: 5%;
 }
 
+/* All links */
 a {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   color: #333;
@@ -86,7 +146,8 @@ a:hover {
   border-color: #00ffff;
 }
 
-.summary {
+.summary {	
+  margin-left: 0px;
   font-weight: 300;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -102,63 +163,18 @@ a:hover {
 }
 
 .intro, .main {
-	margin: 10px; /* undo the -10 margin*/
+	margin: 10px; /* undoing the -10 margin*/
 }
 
-.page-wrapper {
-  background-color: #ffb151;
-  /*background-image: url("SVG/flower.svg");*/
-  margin: -10px;
-}
-
-.page-wrapper > .banner > h2 {
-  color: #e31266;
-  background-color: red;
-}
-
-.sidebar {
-	padding: 10px;
-}
-
-h2, h3 {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	text-align: center;
-}
-
-h2 > abbr {
-	padding: 0em .5em;
-}
-
-h2:before, h2:after, h3:before, h3:after {
-	 display: block;
-	 content: "";
-	 height: 50px;
-	 width: 50px;
-	 background-repeat: no-repeat;
-}
-
-h2:before, h2:after {
-	background-image: url("SVG/toucan.svg");
-}
- h3:before, h3:after {	
-	 background-image: url("SVG/bellFlower.svg");	 
- }
- 
-h2:after {
-	margin-left: 15px;
-}
- 
-h3:after {
-	 margin-left: 30px;
- }
-
-/* Bamboo background */
+/* Adding a Bamboo background */
 .sidebar, header > h1 {
 	background-image: url("SVG/bamboo.svg");
 	background-position: right top;
 	background-repeat: repeat;
+}
+
+.sidebar {
+	padding: 10px;
 }
 
 .sidebar ul > li {
@@ -171,29 +187,9 @@ footer {
 	padding: 20px;
 }
 
-header > h1:before {
-	display: grid; /* Text is centered a row above, float right with display: flex */
-	content: "Tropical";
-}
-
-header > h1 {
-	/*background: rgba(255, 255, 255, .1);*/
-	margin: -5.5%;
-	padding: 5.5%;
-	margin-bottom: 0;
-	margin-right: -10px;
-	padding-bottom: 2%;
-	
-	text-align: center;
-	font-size: 60px;
-	
-  
-}
-
-/* Move to bottom of page/sidebar? - would have to do funky things with absolute positioning */
-
+/* Move this section to bottom of the sidebar? - would have to do funky things with absolute positioning, would also damage accesibility? */
 p[role=contentinfo], footer {
-	background-color: white;
+	/*background-color: white;*/
 	/*
 	Moves to bottom of VIEWPORT, not page
 	position: fixed;
@@ -205,9 +201,8 @@ footer {
 	top: 100vh;*/
 }
 
-
 /* Smaller screen size */
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .page-wrapper {
     display: grid;
     grid-template-columns: 1;
@@ -220,10 +215,19 @@ footer {
 	  margin-right: 0px;
 	  padding-right: 0px;
   }
+  
+  ul {
+	  list-style: none;
+  }
+  
+  ul > li {
+	  display: inline-block;
+  }  
 }
 
 /* Larger screen size */
 @media (min-width: 900px) {
+	/* Use a grid to position everything in the page */
 	.page-wrapper {
 		display: grid;
 		grid-template-areas: 
@@ -232,6 +236,7 @@ footer {
 		 "main main main sidebar";	
 	}
 	
+	/* Assign each section a grid-area */
 	section.intro {
 		grid-area: intro;
 	}
@@ -242,16 +247,22 @@ footer {
 	
 	aside.sidebar {
 		grid-area: sidebar;
-
 	}
 	
+	/* Add spacing between the header and sidebar content */
 	.sidebar:before {
 		display: block;
 		content: "";
 		z-index: 4;
 		width: 100%;
 		height: 4.8%;
-		background-color: transparent;
+		/*background-color: transparent;*/
+		background-image: url("SVG/bellFlower.svg");
+		margin-top: -10px;
+	}
+	
+	ul > li {
+		margin-bottom: 15px; /* Add more spacing to the sidebar items */
 	}
 	
 }
