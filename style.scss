@@ -1,15 +1,234 @@
-@use '_organisms' as o;
-@use '_molecules' as m;
-@use '_atoms' as a;
+@use '_variables' as v;
 
-
-/* Smaller screen size */
-@media (max-width: 600px) {
-// Change to single column scroll
+@mixin name {
+// CSS here - anything often repeated
+}
+:root {
+	overflow-x: hidden; /* Hide horizontal scroll bar */
+}
 .page-wrapper {
-display: grid;
-grid-template-columns: 1;
+    /* Display everything in a single column */
+    display: grid;
+    grid-template-columns: 1;
 
+    margin: -10px;
+
+    /* Background of repeating flowers */
+    background: round v.$flower-img;
+    background-size: 125px 120px;
+    background-position: center top;
+    background-color: v.$background-color;
 }
 
+/* For the main heading/title */
+h1 {
+  color: v.$title-color;
+  font-weight: 900; /* Heavy */
+  font-size: 60px;
+  letter-spacing: 1px;
+  line-height: 1em;
+
+  margin: -5.5%;
+  padding: 5.5%;
+  margin-bottom: 0;
+  margin-right: -10px;
+  padding-bottom: 2%;
+  text-align: center;
+
+  /* Add "Tropical" before the header */
+  &:before {
+       display: grid; /* Text is centered a row above, float right with display: flex */
+       content: "Tropical";
+   }
 }
+
+/* For all subheadings */
+h2,
+h3 {
+    font-family: v.$fonts-headline;
+    margin: 5%;
+    font-size: 1.5em;
+    line-height: 1em;
+
+    /* The before and after items of the headers will be in the flex row */
+    display: flex;
+	flex-direction: row;
+	justify-content: center;
+	text-align: center;
+
+    /* Add spaces to put images before and after the sub-headings */
+    &:before, &:after {
+        display: block;
+        content: "";
+        height: 50px;
+        width: 50px;
+        background-repeat: no-repeat;
+  }
+}
+
+h2 {
+    /* Space the CSS abbreviation to fit in the header */
+    & > abbr {
+    padding: 0em .5em;
+    }
+
+    /* Add Toucan SVG to the h2 header */
+    &:before, &:after {
+    	background-image: v.$toucan-img;
+    }
+    &:after {
+        /* Adjusting margin to keep header centered */
+        margin-left: 15px;
+    }
+}
+
+h3 {
+    /* Add Bell Flower SVG to all h3 headers */
+    &:before, &:after {
+        background-image: v.$bell-flower-img;
+    }
+    &:after {
+        /* Adjusting margin to keep header centered */
+        margin-left: 30px;
+    }
+}
+
+abbr {
+	text-decoration: none;
+}
+
+p {
+  font-family: v.$fonts-body;
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 0;  
+  color: v.$text-dark;
+  padding: 5%;
+}
+
+/* All links */
+a {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: v.$text-dark;
+  text-decoration: none;
+  transition: border-color 0.2s ease-in-out;
+
+  &:hover {
+    border-color: v.$accent1;
+  }
+}
+
+.summary {	
+    margin-left: 0px;
+    font-weight: 300;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: v.$text-light;
+
+    /* The last child */
+    & p:last-child {
+      border-top: 1px solid v.$text-light;
+      margin-top: 1em;
+      padding-top: 1.5em;
+    }
+    /* Links have light text */
+    & a {
+        color: v.$text-light;
+    }
+}
+
+.intro, .main {
+	margin: 10px; /* undoing the -10 margin */
+}
+
+/* Adding a Bamboo background */
+.sidebar, header > h1 {
+	background-image: v.$bamboo-img;
+	background-position: right top;
+	background-repeat: repeat;
+}
+
+.sidebar {
+	padding: 10px;
+
+    & ul {
+        list-style: none;
+        & > li {
+            display: inline-block;
+            padding: 1%;
+            padding-top: 3%;
+            padding-bottom: 2%;
+        }
+    }
+}
+
+footer {
+	padding: 20px;
+}
+
+/* Move this section to bottom of the sidebar? - would have to do funky things with absolute positioning, would also damage accesibility? */
+p[role=contentinfo], footer {
+	/*background-color: white;*/
+	/*
+	Moves to bottom of VIEWPORT, not page
+	position: fixed;
+	bottom: 0;*/
+}
+footer {
+	/*
+	position: absolute;
+	top: 100vh;*/
+}
+
+body, .page-wrapper {
+  margin-right: 0px;
+}
+section.intro, header > h1 {
+  margin-right: 0px;
+  padding-right: 0px;
+}
+
+/* Making the text easier to read */
+ul, p {
+	//background: rgba(255, 255, 255, .15);
+	font-weight: 600;
+}
+
+/* Larger screen size */
+@media (min-width: v.$responsive-width) {
+	/* Use grid-template-area to assign sections to the page */
+	.page-wrapper {
+		display: grid;
+		grid-template-areas: 
+		 "intro intro intro sidebar"
+		 "main main main sidebar"
+		 "main main main sidebar";	
+	}
+	
+	/* Assign each item a grid-area */
+	section.intro {
+		grid-area: intro;
+	}
+	div.main {
+		grid-area: main;
+	}
+	aside.sidebar {
+		grid-area: sidebar;
+	}
+	
+	/* Add spacing between the header and sidebar content */
+	.sidebar:before {
+		display: block;
+		content: "";
+		z-index: 4;
+		width: 100%;
+		height: 4.8%;
+		background-image: v.$bell-flower-img;
+		margin-top: -10px;
+	}
+	
+	ul > li {
+		margin-bottom: 15px; /* Add more spacing to the sidebar items */
+	}
+}
+/*# sourceMappingURL=style.css.map */

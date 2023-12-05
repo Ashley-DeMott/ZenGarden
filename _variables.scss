@@ -1,13 +1,26 @@
+$responsive-width: 900px;
+
+$bamboo-img: url("SVG/bamboo.svg");
+$flower-img: url("SVG/flower1.svg");
+$bell-flower-img: url("SVG/blue-flower.svg");
+$toucan-img: url("SVG/toucan.svg");
+
+$background-color: #ffb151;
+$title-color: #ff0055;
+
+$text-light: #fff; // White
+$text-dark: #333;; // Black/grey
+$accent1: #00ffff; // Bright blue
+
 $fonts-headline: 'Pacifico', cursive;
 $fonts-body: 'Josefin Sans', sans-serif;
-$background-color: #40E0D0; // Teal
-$primary: #ffff8f; // Yellow
-$accent1: #00ffff; // Bright blue
-$accent2: #ff0055;
+
+// Previous, remove?
+//$background-color: #40E0D0; // Teal
+//$primary: #ffff8f; // Yellow
+//$accent2: #ff0055;
 //#ff00ff; // Pink/Fuschia 
-$accent3: #f28500; // orange
-$text-dark: #333;; // Black/grey
-$text-light: #fff; // White
+//$accent3: #f28500; // orange
 
 // Apricot
 // #fbceb1
