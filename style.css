@@ -1,87 +1,83 @@
-:root {
-  overflow-x: hidden; /* Hide horizontal scroll bar */
-}
-
 .page-wrapper {
   /* Display everything in a single column */
   display: grid;
-  grid-template-columns: 1;
-  margin: -10px;
+  grid-template-columns: 1fr;
+  /* Keep background over whole page */
+  margin: -10px -1.5%;
   /* Background of repeating flowers */
-  background: round url("SVG/flower1.svg");
+  /*background: round v.$flower-img;
+  background-size: 125px 120px;*/
+  background-image: url("SVG/bgFlowers1.svg");
   background-size: 125px 120px;
   background-position: center top;
-  background-color: #ffb151;
+  background-color: #75E9DD;
 }
 
-/* For the main heading/title */
 h1 {
+  /* For the main heading/title */
   color: #ff0055;
   font-weight: 900; /* Heavy */
-  font-size: 60px;
+  font-size: 90px;
   letter-spacing: 1px;
   line-height: 1em;
-  margin: -5.5%;
-  padding: 5.5%;
+  margin: -25px -2%;
+  padding: 2%;
   margin-bottom: 0;
-  margin-right: -10px;
-  padding-bottom: 2%;
   text-align: center;
-  /* Add "Tropical" before the header */
 }
 h1:before {
-  display: grid; /* Text is centered a row above, float right with display: flex */
+  /* Add "Tropical" before the header */
+  display: grid; /* Text is centered a row above */
   content: "Tropical";
 }
 
-/* For all subheadings */
 h2,
 h3 {
+  /* For all subheadings */
   font-family: "Pacifico", cursive;
-  margin: 5%;
-  font-size: 1.5em;
+  font-size: 3em;
   line-height: 1em;
-  /* The before and after items of the headers will be in the flex row */
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
   text-align: center;
-  /* Add spaces to put images before and after the sub-headings */
-}
-h2:before, h2:after,
-h3:before,
-h3:after {
-  display: block;
-  content: "";
-  height: 50px;
-  width: 50px;
-  background-repeat: no-repeat;
+  margin: 5%;
 }
 
 h2 {
-  /* Space the CSS abbreviation to fit in the header */
-  /* Add Toucan SVG to the h2 header */
+  /* h2 cannot use flex since it has <abbr> inside of it, spacing is altered */
 }
-h2 > abbr {
-  padding: 0em 0.5em;
-}
-h2:before, h2:after {
+h2:before {
+  /* Add Toucan SVG before the h2 header */
+  display: block;
+  content: "";
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-image: url("SVG/toucan.svg");
-}
-h2:after {
-  /* Adjusting margin to keep header centered */
-  margin-left: 15px;
+  float: left;
 }
 
 h3 {
-  /* Add Bell Flower SVG to all h3 headers */
+  /* The :before and :after items of the headers will be in the flex row */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  column-gap: 0px;
+  /* Add spaces to put images before and after the sub-headings */
 }
 h3:before, h3:after {
+  flex-shrink: 0;
+  content: "";
+  height: 100px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+h3:before, h3:after {
+  /* Add Bell Flower SVG to all h3 headers */
   background-image: url("SVG/blue-flower.svg");
 }
 h3:after {
   /* Adjusting margin to keep header centered */
-  margin-left: 30px;
 }
 
 abbr {
@@ -94,11 +90,11 @@ p {
   line-height: 1.5em;
   margin: 0;
   color: #333;
-  padding: 5%;
+  padding: 1em;
 }
 
-/* All links */
 a {
+  /* All links */
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   color: #333;
   text-decoration: none;
@@ -114,24 +110,25 @@ a:hover {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: #fff;
-  /* The last child */
-  /* Links have light text */
 }
 .summary p:last-child {
-  border-top: 1px solid #fff;
-  margin-top: 1em;
-  padding-top: 1.5em;
+  /* The last child */
+  /*
+      border-top: 1px solid v.$text-light;
+      margin-top: 1em;
+      padding-top: 1.5em; */
 }
 .summary a {
+  /* Links have light text */
   color: #fff;
 }
 
 .intro, .main {
-  margin: 10px; /* undoing the -10 margin */
+  margin: 10px;
 }
 
-/* Adding a Bamboo background */
 .sidebar, header > h1 {
+  /* Adding a Bamboo background */
   background-image: url("SVG/bamboo.svg");
   background-position: right top;
   background-repeat: repeat;
@@ -139,56 +136,56 @@ a:hover {
 
 .sidebar {
   padding: 10px;
+  margin: 0;
 }
 .sidebar ul {
   list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10%;
 }
 .sidebar ul > li {
+  padding: 2%;
+}
+.sidebar .design-archives ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.sidebar li:before {
+  /* Ad a flower before each list item */
   display: inline-block;
-  padding: 1%;
-  padding-top: 3%;
-  padding-bottom: 2%;
+  content: "";
+  width: 35px;
+  height: 32px;
+  content: url(SVG/snowflakeFlower.svg);
+  background-repeat: no-repeat;
+}
+.sidebar li:before:hover {
+  background-color: #00ffff;
+  transform: rotate(-720deg);
+  overflow: hidden;
+  transition-duration: 1.3s;
+  transition-property: transform;
 }
 
 footer {
   padding: 20px;
 }
 
-/* Move this section to bottom of the sidebar? - would have to do funky things with absolute positioning, would also damage accesibility? */
-p[role=contentinfo], footer {
-  /*background-color: white;*/
-  /*
-  Moves to bottom of VIEWPORT, not page
-  position: fixed;
-  bottom: 0;*/
-}
-
-footer {
-  /*
-  position: absolute;
-  top: 100vh;*/
-}
-
-body, .page-wrapper {
-  margin-right: 0px;
-}
-
-section.intro, header > h1 {
-  margin-right: 0px;
-  padding-right: 0px;
-}
-
-/* Making the text easier to read */
 ul, p {
+  /* Making the text easier to read */
   font-weight: 600;
 }
 
-/* Larger screen size */
 @media (min-width: 900px) {
-  /* Use grid-template-area to assign sections to the page */
+  /* Larger screen size */
   .page-wrapper {
-    display: grid;
+    /* Use grid-template-area to assign sections to the page */
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Change to 4 evenly sized columns */
     grid-template-areas: "intro intro intro sidebar" "main main main sidebar" "main main main sidebar";
+    grid-gap: 5px;
   }
   /* Assign each item a grid-area */
   section.intro {
@@ -197,21 +194,32 @@ ul, p {
   div.main {
     grid-area: main;
   }
-  aside.sidebar {
+  .sidebar {
     grid-area: sidebar;
+    margin-top: -25px;
+    /* Since super specific above, needs to be specific here */
   }
-  /* Add spacing between the header and sidebar content */
   .sidebar:before {
+    /* Add a block between the header and sidebar content, with an image */
     display: block;
     content: "";
-    z-index: 4;
     width: 100%;
-    height: 4.8%;
+    height: 250px;
+    z-index: 4; /* On top of the bamboo bg */
     background-image: url("SVG/blue-flower.svg");
-    margin-top: -10px;
   }
-  ul > li {
+  .sidebar ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .sidebar ul > li {
     margin-bottom: 15px; /* Add more spacing to the sidebar items */
+  }
+  .sidebar .design-archives ul {
+    flex-direction: column;
+  }
+  h1 {
+    margin-right: -20px; /* Background goes over the grid-gap */
   }
 }
 

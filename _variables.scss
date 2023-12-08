@@ -1,11 +1,11 @@
-$responsive-width: 900px;
+$responsive-width: 900px; // Transition from small to large size
 
 $bamboo-img: url("SVG/bamboo.svg");
-$flower-img: url("SVG/flower1.svg");
+$flower-img: url("SVG/bgFlowers1.svg"); // Todo: Get Image!
 $bell-flower-img: url("SVG/blue-flower.svg");
 $toucan-img: url("SVG/toucan.svg");
 
-$background-color: #ffb151;
+$background-color: #75E9DD;
 $title-color: #ff0055;
 
 $text-light: #fff; // White
@@ -14,21 +14,3 @@ $accent1: #00ffff; // Bright blue
 
 $fonts-headline: 'Pacifico', cursive;
 $fonts-body: 'Josefin Sans', sans-serif;
-
-// Previous, remove?
-//$background-color: #40E0D0; // Teal
-//$primary: #ffff8f; // Yellow
-//$accent2: #ff0055;
-//#ff00ff; // Pink/Fuschia 
-//$accent3: #f28500; // orange
-
-// Apricot
-// #fbceb1
-
-// From the image
-// Tangerine #ffb151 or #ffc278
-// Pink #ff0055
-
-// Approx
-// Rusty Orange #e36212
-// Magenta #e31266
