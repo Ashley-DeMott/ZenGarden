@@ -55,10 +55,10 @@ h3 {
   justify-content: center;
   flex-wrap: nowrap;
   column-gap: 0px;
-  /* Add spaces to put images before and after the sub-headings */
 }
 h3:before, h3:after {
   flex-shrink: 0;
+  /* Add Snowflake flower to h3 headers */
   display: block;
   content: url(SVG/snowflakeFlower.svg);
   width: 50px;

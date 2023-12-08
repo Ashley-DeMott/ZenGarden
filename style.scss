@@ -1,9 +1,5 @@
 @use "_variables" as v;
 
-@mixin addImage {
-  // CSS here - anything often repeated
-}
-
 // Add images to the side of headers
 @mixin addImage($width, $height, $image: "") {
   display: block;
@@ -26,7 +22,7 @@
   grid-template-columns: 1fr;
 
   /* Keep background over whole page */
-  margin: -10px -1.5%; // ToDo: width < 550px starte showing white outside margin
+  margin: -10px -1.5%; // ToDo: width < 550px starts showing white outside margin
 
   /* Background of repeating flowers */
   background-image: v.$background-flowers;
@@ -54,6 +50,7 @@ h1 {
     content: "Tropical";
   }
 }
+
 h2,
 h3 {
   /* For all subheadings */
@@ -78,10 +75,11 @@ h3 {
   @include flex(row, center);
   column-gap: 0px;
 
-  /* Add spaces to put images before and after the sub-headings */
   &:before,
   &:after {
     flex-shrink: 0;
+
+	/* Add Snowflake flower to h3 headers */
     @include addImage(50px, 50px, v.$snowflake-flower);
   }
 }
