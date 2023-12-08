@@ -39,18 +39,12 @@ h3 {
   margin: 5%;
 }
 
-h2 {
-  /* h2 cannot use flex since it has <abbr> inside of it, spacing is altered */
-}
 h2:before {
   /* Add Toucan SVG before the h2 header */
   display: block;
-  content: "";
-  height: 100px;
-  width: 100px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url("SVG/toucan.svg");
+  content: url("SVG/toucan.svg");
+  width: 75px;
+  height: 75px;
   float: left;
 }
 
@@ -59,25 +53,24 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: nowrap;
   column-gap: 0px;
   /* Add spaces to put images before and after the sub-headings */
 }
 h3:before, h3:after {
   flex-shrink: 0;
-  content: "";
-  height: 100px;
+  display: block;
+  content: url(SVG/snowflakeFlower.svg);
   width: 50px;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-h3:before, h3:after {
-  /* Add Bell Flower SVG to all h3 headers */
-  background-image: url(SVG/snowflakeFlower.svg);
+  height: 50px;
 }
 
 .sidebar h3:before, .sidebar h3:after {
-  /* Add Bell Flower SVG to all h3 headers */
-  background-image: url("SVG/blue-flower.svg");
+  /* Add Bell Flower SVG to the sidebar's h3 headers */
+  display: block;
+  content: url("SVG/blue-flower.svg");
+  width: 25px;
+  height: 50px;
 }
 
 abbr {
@@ -86,10 +79,10 @@ abbr {
 
 p {
   font-family: "Josefin Sans", sans-serif;
+  color: #333;
   font-size: 1em;
   line-height: 1.5em;
   margin: 0;
-  color: #333;
   padding: 1em;
 }
 
@@ -102,33 +95,25 @@ a {
 }
 a:hover {
   border-color: #00ffff;
+  border-bottom-width: 2px;
 }
 
 .summary {
-  margin-left: 0px;
   font-weight: 300;
+  color: #fff;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #fff;
-}
-.summary p:last-child {
-  /* The last child */
-  /*
-      border-top: 1px solid v.$text-light;
-      margin-top: 1em;
-      padding-top: 1.5em; */
-}
-.summary a {
-  /* Links have light text */
-  color: #fff;
+  margin-left: 0px;
 }
 
-.intro, .main {
+.intro,
+.main {
   margin: 10px;
 }
 
-.sidebar, header > h1 {
-  /* Adding a Bamboo background */
+.sidebar,
+header > h1 {
+  /* Add a Bamboo background */
   background-image: url("SVG/bamboo.svg");
   background-position: right top;
   background-repeat: repeat;
@@ -142,41 +127,40 @@ a:hover {
   list-style: none;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10%;
 }
 .sidebar ul > li {
   padding: 2%;
 }
+.sidebar ul > li:before {
+  /* Add a flower before each list item */
+  display: block;
+  content: url(SVG/snowflakeFlower.svg);
+  width: 35px;
+  height: 32px;
+  display: inline-block;
+}
+.sidebar ul > li:hover:before {
+  /* Animate the flower */
+  transform: rotate(-720deg);
+  transition-duration: 1.3s;
+  transition-property: transform;
+}
 .sidebar .design-archives ul {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-}
-
-li:before {
-  /* Add a flower before each list item */
-  display: inline-block;
-  content: "";
-  width: 35px;
-  height: 32px;
-  content: url(SVG/snowflakeFlower.svg);
-  background-repeat: no-repeat;
-}
-li:hover:before {
-  /* Animate the flower */
-  transform: rotate(-720deg);
-  overflow: hidden;
-  transition-duration: 1.3s;
-  transition-property: transform;
+  flex-wrap: nowrap;
 }
 
 footer {
   padding: 20px;
 }
 
-ul, p {
-  /* Making the text easier to read */
+ul,
+p {
   font-weight: 600;
 }
 
@@ -198,6 +182,7 @@ ul, p {
   .sidebar {
     grid-area: sidebar;
     margin-top: -25px;
+    padding-right: 0;
     /* Since super specific above, needs to be specific here */
   }
   .sidebar:before {
@@ -212,12 +197,17 @@ ul, p {
   .sidebar ul {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
   }
   .sidebar ul > li {
     margin-bottom: 15px; /* Add more spacing to the sidebar items */
   }
   .sidebar .design-archives ul {
+    display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
   }
   h1 {
     margin-right: -20px; /* Background goes over the grid-gap */
