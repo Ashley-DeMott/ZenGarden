@@ -5,10 +5,8 @@
   /* Keep background over whole page */
   margin: -10px -1.5%;
   /* Background of repeating flowers */
-  /*background: round v.$flower-img;
-  background-size: 125px 120px;*/
   background-image: url("SVG/bgFlowers1.svg");
-  background-size: 125px 120px;
+  background-size: 1150px;
   background-position: center top;
   background-color: #75E9DD;
 }
@@ -74,10 +72,12 @@ h3:before, h3:after {
 }
 h3:before, h3:after {
   /* Add Bell Flower SVG to all h3 headers */
-  background-image: url("SVG/blue-flower.svg");
+  background-image: url(SVG/snowflakeFlower.svg);
 }
-h3:after {
-  /* Adjusting margin to keep header centered */
+
+.sidebar h3:before, .sidebar h3:after {
+  /* Add Bell Flower SVG to all h3 headers */
+  background-image: url("SVG/blue-flower.svg");
 }
 
 abbr {
@@ -153,8 +153,9 @@ a:hover {
   flex-direction: row;
   justify-content: space-around;
 }
-.sidebar li:before {
-  /* Ad a flower before each list item */
+
+li:before {
+  /* Add a flower before each list item */
   display: inline-block;
   content: "";
   width: 35px;
@@ -162,8 +163,8 @@ a:hover {
   content: url(SVG/snowflakeFlower.svg);
   background-repeat: no-repeat;
 }
-.sidebar li:before:hover {
-  background-color: #00ffff;
+li:hover:before {
+  /* Animate the flower */
   transform: rotate(-720deg);
   overflow: hidden;
   transition-duration: 1.3s;

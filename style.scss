@@ -3,6 +3,7 @@
 @mixin addImage {
 // CSS here - anything often repeated
 }
+
 .page-wrapper {
     /* Display everything in a single column */
     display: grid;
@@ -13,11 +14,8 @@
 	//margin-top: 0px;
 	
     /* Background of repeating flowers */
-    /*background: round v.$flower-img;
-    background-size: 125px 120px;*/
-	
-	background-image: v.$flower-img;
-	background-size: 125px 120px;
+	background-image: v.$background-flowers;
+	background-size: 1150px;
     background-position: center top;
     background-color: v.$background-color;
 }
@@ -62,7 +60,7 @@ h2 {
 		width: 100px;
 		background-repeat: no-repeat;
 		background-position: center center;
-    	background-image: v.$toucan-img;
+    	background-image: v.$toucan;
 		float: left;
     } 
 }
@@ -83,14 +81,18 @@ h3 {
         background-repeat: no-repeat;
 		background-position: center center;
   }
-	
-    &:before, &:after {
-	/* Add Bell Flower SVG to all h3 headers */
-        background-image: v.$bell-flower-img;
+  
+  
+	&:before, &:after {
+		/* Add Bell Flower SVG to all h3 headers */
+        background-image: v.$snowflake-flower;
     }
-    &:after {
-        /* Adjusting margin to keep header centered */
-        //margin-left: 30px;
+}
+
+.sidebar  h3 {
+	&:before, &:after {
+		/* Add Bell Flower SVG to all h3 headers */
+        background-image: v.$bell-flower;
     }
 }
 
@@ -148,7 +150,7 @@ a {
 
 .sidebar, header > h1 {
 	/* Adding a Bamboo background */
-	background-image: v.$bamboo-img;
+	background-image: v.$bamboo;
 	background-position: right top;
 	background-repeat: repeat;
 }
@@ -174,25 +176,29 @@ a {
 		flex-direction: row;
 		justify-content: space-around;
 	}
+}
 
- li:before {
-    /* Ad a flower before each list item */
+li
+{ 
+   &:before {
+    /* Add a flower before each list item */
     display: inline-block;
     content: "";
     width: 35px;
     height: 32px;
-    content: url(SVG/snowflakeFlower.svg);
+    content: v.$snowflake-flower;
     background-repeat: no-repeat;
-	
-	&:hover {
-    // To Do: Animation not working
-	background-color: #00ffff;
-    transform: rotate(-720deg);
+  }
+  
+  &:hover {
+&:before {
+	/* Animate the flower */
+	transform: rotate(-720deg);
     overflow: hidden;
     transition-duration: 1.3s;
     transition-property: transform;
-    }
-  }
+ }
+ }
 }
 
 footer {
@@ -237,7 +243,7 @@ ul, p {
 		height: 250px; // Goal: height is title's size
 		
 		z-index: 4; /* On top of the bamboo bg */
-		background-image: v.$bell-flower-img;
+		background-image: v.$bell-flower;
 	  } 
 	  
 		ul {		
